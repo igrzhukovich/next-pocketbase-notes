@@ -1,8 +1,9 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import "@picocss/pico";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Notes App",
@@ -10,13 +11,41 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <title>Hey! This is Notes app</title>
+            </head>
+            <body>
+                <header className="container">
+                    <hgroup>
+                        <h1>Hey!</h1>
+                        <h2>
+                            Hey! This is Notes app with help of Next.js and
+                            Pocketbase
+                        </h2>
+                    </hgroup>
+                    <nav>
+                        <ul>
+                            <li>
+                                <Link href="/">Home</Link>
+                            </li>
+                            <li>
+                                <Link href="/notes">Notes</Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <main className="container">{children}</main>
+            </body>
+        </html>
+    );
 }
